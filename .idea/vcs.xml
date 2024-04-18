@@ -4,5 +4,6 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/jdbcex" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/w1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/w2" vcs="Git" />
   </component>
 </project>

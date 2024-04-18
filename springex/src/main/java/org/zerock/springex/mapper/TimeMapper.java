@@ -3,6 +3,6 @@ package org.zerock.springex.mapper;
 import org.apache.ibatis.annotations.Select;
 
 public interface TimeMapper {
-  @Select("SELECT NOW()")
+  @Select("select now()")
   String getTime();
 }
