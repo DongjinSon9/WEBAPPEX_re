@@ -13,7 +13,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
@@ -26,7 +27,9 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#">Navbar</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aira-expand="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                                aira-expand="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -65,10 +68,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${dtoList}" var="dto">
+                        <%--                        페이징 처리 부분, 서버에서 전달받은 모델 인스턴스를 불러와서 화면에서 이용하기    --%>
+                        <c:forEach items="${responseDTO.dtoList}" var="dto">
                             <tr>
                                 <th scope="row"><c:out value="${dto.tno}"/></th>
-                                <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out value="${dto.title}"/></a></td>
+                                <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out
+                                        value="${dto.title}"/></a></td>
                                 <td><c:out value="${dto.writer}"/></td>
                                 <td><c:out value="${dto.dueDate}"/></td>
                                 <td><c:out value="${dto.finished}"/></td>
@@ -76,6 +81,13 @@
                         </c:forEach>
                         </tbody>
                     </table>
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
+                            <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                                <li class="page-item"><a class="page-link" href="#">${num}</a></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,6 +107,8 @@
     </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>

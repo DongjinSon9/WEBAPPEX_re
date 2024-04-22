@@ -10,11 +10,9 @@ public interface TodoService {
 
     void register(TodoDTO todoDTO);
 
-//    List<TodoDTO> getAll();
+    List<TodoDTO> getAll();
 
     PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
-
-    List<TodoDTO> getAll();
 
     TodoDTO getOne(Long tno);
 
