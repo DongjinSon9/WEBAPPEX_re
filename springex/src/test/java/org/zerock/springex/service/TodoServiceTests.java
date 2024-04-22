@@ -7,6 +7,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.zerock.springex.dto.PageRequestDTO;
+import org.zerock.springex.dto.PageResponseDTO;
 import org.zerock.springex.dto.TodoDTO;
 
 import java.time.LocalDate;
@@ -29,4 +31,23 @@ public class TodoServiceTests {
 
         todoService.register(todoDTO);
     }
+
+    @Test
+    public void testPaging() {
+
+//        화면에서 전달 받은 파라미터 값
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+
+//        서버에서 계산하는 테스트
+        PageResponseDTO<TodoDTO> responseDTO = todoService.getList(pageRequestDTO);
+        log.info(responseDTO);
+        
+//        10개의 게시글을 순회해서 하나씩 확인해보기
+        responseDTO.getDtoList().stream().forEach(todoDTO -> log.info(todoDTO));
+
+    }
+
 }

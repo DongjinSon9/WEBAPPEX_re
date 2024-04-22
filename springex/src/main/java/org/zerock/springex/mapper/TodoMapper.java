@@ -23,6 +23,6 @@ public interface TodoMapper {
     List<TodoVO> selectList(PageRequestDTO pageRequestDTO);
 
 //    전체 갯수를 알아야, 페이징을 나누기 가능.
-    int count(PageRequestDTO pageRequestDTO);
+    int getCount(PageRequestDTO pageRequestDTO);
 
 }
