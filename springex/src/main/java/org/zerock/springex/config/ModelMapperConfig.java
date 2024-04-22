@@ -10,7 +10,6 @@ public class ModelMapperConfig {
 
     @Bean
     public ModelMapper getMapper() {
-
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
@@ -18,7 +17,5 @@ public class ModelMapperConfig {
                 .setMatchingStrategy(MatchingStrategies.STRICT);
 
         return modelMapper;
-
     }
-
 }
