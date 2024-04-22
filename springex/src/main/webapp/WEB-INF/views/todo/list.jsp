@@ -67,7 +67,8 @@
                             <c:forEach items="${responseDTO.dtoList}" var="dto">
                                 <tr>
                                     <th scope="row"><c:out value="${dto.tno}"/></th>
-                                    <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out
+                                        <%--                                        ${pageRequestDTO.link} = page=1&size=10--%>
+                                    <td><a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}" class="text-decoration-none"><c:out
                                             value="${dto.title}"/></a></td>
                                     <td><c:out value="${dto.writer}"/></td>
                                     <td><c:out value="${dto.dueDate}"/></td>
@@ -90,9 +91,8 @@
                                     </c:if>
                                     <%--                                        현재 페이지--%>
                                     <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
-                                        <li class="page-item ${responseDTO.page == num ? "active" :""}">
-                                            <a class="page-link" data-num="${num}">${num}</a>
-                                        </li>
+                                        <li class="page-item ${responseDTO.page == num ? "active" :""}
+"><a class="page-link" data-num="${num}">${num}</a></li>
                                     </c:forEach>
 
                                     <%--                            다음 버튼 표시 --%>

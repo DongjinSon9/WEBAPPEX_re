@@ -94,6 +94,8 @@ To change this template use File | Settings | File Templates.
                         <button type="button" class="btn btn-secondary">List</button>
                     </div>
                 </div>
+                    <input type="hidden" name="page" value="${pageRequestDTO.page}">
+                    <input type="hidden" name="size" value="${pageRequestDTO.size}">
                 </form>
                 <script>
                     document.querySelector(".btn-primary").addEventListener("click", function(e){self.location = "/todo/modify?tno="+${dto.tno}}, false)
