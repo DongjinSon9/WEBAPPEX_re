@@ -51,11 +51,11 @@
                             <form action="/todo/list" method="get">
                                 <input type="hidden" name="size" value="${pageRequestDTO.size}">
                                 <div class="mb-3">
-                                    <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checkd":""}>완료여부
+                                    <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""}>완료여부
                                 </div>
                                 <div class="mb-3">
-                                    <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checkd":""}>제목
-                                    <input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType("w")?"checkd":""}>작성자
+                                    <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checked":""}>제목
+                                    <input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType("w")?"checked":""}>작성자
                                     <input type="text" name="keyword" class="form-control" value='<c:out value="${pageRequestDTO.keyword}"/>' >
                                 </div>
                                 <div class="input-group mb-3 dueDateDiv">
@@ -65,7 +65,7 @@
                                 <div class="input-group mb-3">
                                     <div class="float-end">
                                         <button class="btn btn-primary" type="submit">Search</button>
-                                        <button class="btn btn-info" type="reset">Clear</button>
+                                        <button class="btn btn-info clearBtn" type="reset">Clear</button>
                                     </div>
                                 </div>
                             </form>
@@ -124,8 +124,7 @@
                                     </c:if>
                                     <%--                                        현재 페이지--%>
                                     <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
-                                        <li class="page-item ${responseDTO.page == num ? "active" :""}
-"><a class="page-link" data-num="${num}">${num}</a></li>
+                                        <li class="page-item ${responseDTO.page == num ? "active" :""}"><a class="page-link" data-num="${num}">${num}</a></li>
                                     </c:forEach>
 
                                     <%--                            다음 버튼 표시 --%>
@@ -162,8 +161,22 @@
                                             // 정확히 하면 PageRequestDTO에 담아서 호출하고,
                                             // 서버는 PageResponseDTO에 담아서 화면에 보내고,
                                             // 화면은 해당 인스턴스 이용해서, 화면에 출력하는 형식.
-                                            self.location = `/todo/list?page=\${num}`
+                                            // self.location = `/todo/list?page=\${num}`
+
+                                            const formObj = document.querySelector("form")
+
+                                            formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
+                                            formObj.submit();
+
                                         },false)
+
+                                    document.querySelector(".clearBtn").addEventListener("click", function (e) {
+                                        e.preventDefault()
+                                        e.stopPropagation()
+
+                                        self.location = '/todo/list'
+                                    }, false)
+
                                 </script>
 
 

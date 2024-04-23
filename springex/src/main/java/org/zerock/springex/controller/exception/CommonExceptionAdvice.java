@@ -27,7 +27,7 @@ public class CommonExceptionAdvice {
 
             log.error("---------------------------");
             log.error(exception.getMessage());
-
+            exception.printStackTrace();
             StringBuffer buffer = new StringBuffer("<ul>");
             buffer.append("<li>" + exception.getStackTrace() + "</li>");
 
