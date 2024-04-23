@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Positive;
+import java.time.LocalDate;
 
 @Builder
 @Data
@@ -18,6 +19,15 @@ public class PageRequestDTO {
     // 페이징을 처리하기 위해서, 앞단(화면)에서, 파라미터 정보를 보내는데,
     // 이것 하나의 양식 폼에 담아두기. PageRequestDTO
     // 화면에서 전달한 파라미터를 담아두는 클래스 DTO
+
+    private String[] types;
+    private String keyword;
+    private boolean finished;
+    private LocalDate from;
+    private LocalDate to;
+
+
+
 
     @Positive
     @Min(value = 1)
@@ -47,6 +57,9 @@ public class PageRequestDTO {
         // link = "page=1&size=10"
         return link;
     }
+
+
+
 
 
 }

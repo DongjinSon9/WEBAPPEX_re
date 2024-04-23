@@ -66,7 +66,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
 
-// 서버에서 , 계산한 멤버들을 , 반환 값으로 보내기 위한 준비 단계,
+        // 서버에서 , 계산한 멤버들을 , 반환 값으로 보내기 위한 준비 단계,
         // 기존에 , 서비스에서 사용했던 메서드들을 재사용할 예정.
         // 해당 페이지의 , 게시글 목록
         // 재료1
