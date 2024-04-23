@@ -42,6 +42,39 @@
 
             </div>
         </div>
+<%-- 검색창 만드는 부분 --%>
+            <div class="row content">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Search </h5>
+                            <form action="/todo/list" method="get">
+                                <input type="hidden" name="size" value="${pageRequestDTO.size}">
+                                <div class="mb-3">
+                                    <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checkd":""}>완료여부
+                                </div>
+                                <div class="mb-3">
+                                    <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checkd":""}>제목
+                                    <input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType("w")?"checkd":""}>작성자
+                                    <input type="text" name="keyword" class="form-control" value='<c:out value="${pageRequestDTO.keyword}"/>' >
+                                </div>
+                                <div class="input-group mb-3 dueDateDiv">
+                                    <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
+                                    <input type="date" name="to" class="form-control" value="${pageRequestDTO.to}">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="float-end">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                        <button class="btn btn-info" type="reset">Clear</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<%-- 검색창 끝  --%>
+
         <div class="row content">
             <%--        <h1>Content</h1>--%>
             <div class="col">
